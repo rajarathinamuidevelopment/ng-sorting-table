@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1 class="text-primary">Angular Sorting Table</h1>
+    <table class="table table-striped table-bordered  table-hover text-info">
+      <tr>
+        <th (click)="sort('userId')">
+          USER ID
+          <i class="fa" [ngClass]="{'fa-sort': column != 'userId', 'fa-sort-asc': (column == 'userId' && isDesc), 'fa-sort-desc': (column == 'userId' && !isDesc) }" aria-hidden="true"> </i>
+        </th>
+        <th (click)="sort('id')">
+          ID
+          <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+        </th>
+        <th (click)="sort('title')">
+          Title
+          <i class="fa" [ngClass]="{'fa-sort': column != 'title', 'fa-sort-asc': (column == 'title' && isDesc), 'fa-sort-desc': (column == 'title' && !isDesc) }" aria-hidden="true"> </i>
+        </th>
+        <th (click)="sort('body')">
+          Body
+          <i class="fa" [ngClass]="{'fa-sort': column != 'body', 'fa-sort-asc': (column == 'body' && isDesc), 'fa-sort-desc': (column == 'body' && !isDesc) }" aria-hidden="true"> </i>
+        </th>
+      </tr>
+      <tr *ngFor="let item of records | orderBy: {property: column, direction: direction}">      
+        <td>{{item.userId}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.body}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
